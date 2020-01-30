@@ -1,0 +1,206 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<sopka.Models.ContextModels.AppUser>
+
+
+@*<div id="mainmenu-component"></div>
+
+	<script src="~/dist/mainmenu.js" asp-append-version="true"></script>*@
+
+
+<style>
+	.start_block {
+		padding: 15px 10px;
+		float: left;
+		width: 100%;
+		background-color: white;
+	}
+
+	.start_block_sm {
+		padding: 10px 10px;
+		float: left;
+		width: 100%;
+		display: flex;
+		background-color: white;
+	}
+
+	.fa25x {
+		font-size: 2.5em;
+	}
+
+	.w3d {
+		width: 50px;
+	}
+
+	.inc {
+		flex-grow: 1;
+		text-align: left;
+		padding-left: 40%;
+	}
+
+	.start_content {
+		padding-left: 15px;
+		padding-top: 15px;
+	}
+</style>
+
+@*<div class="col-lg-12 pleft0 pright0" style="display:flex; flex-direction:column;">
+	<div id="app" class="text-center">
+		<h1 class="display-4">{{ msg }}</h1>
+	</div>
+	<div class="start_content" style="flex-grow: 1;">
+		<div class="col-md-6 h100 pleft0" style="display: flex;flex-direction: column;">
+			<div style="flex-grow: 1;">
+				<div class="start_block" style="border: 1px solid #ccc;">
+					<div class="pull-left fa25x"><i class="fa fa-shield"> </i>&nbsp;<a asp-action="Index" asp-controller="Inventory" title="Объекты">Объекты</a></div>
+					<div class="pull-right fa25x"><span title="Всего">58 </span>/ <span title="Проблемные">5</span></div>
+				</div>
+				<div class="start_block" style="border: 1px solid #ccc;border-top: 0;border-bottom: 0;">
+					<div class="pull-left fa25x"><i class="fa fa-hdd-o"> </i>&nbsp;<a asp-action="Index" asp-controller="Equipment" title="Оборудование">Оборудование</a></div>
+					<div class="pull-right fa25x"><span title="Всего">158 </span>/ <span title="Проблемные">21</span></div>
+				</div>
+				<div class="start_block" style="border: 1px solid #ccc;border-bottom: 0;">
+					<div class="pull-left fa25x"><i class="fa fa-crosshairs"> </i>&nbsp;<a asp-action="Index" asp-controller="Incident" title="Инциденты">Инциденты</a></div>
+					<div class="pull-right fa25x"><span title="За месяц">63 </span>/ <span title="За неделю">14</span></div>
+				</div>
+				<div class="start_block_sm" style="display:flex;border: 1px solid #ccc;border-top: 0;border-bottom: 0;">
+					<div class="fa-2x inc"><i class="fa fa fa-crosshairs" style="color:orange; margin-right:5px;"></i>открыто </div><div class="fa-2x w3d text-right">19</div>
+				</div>
+				<div class="start_block_sm" style="border: 1px solid #ccc;border-top: 0;border-bottom: 0;"><div class="fa-2x inc"><i class="fa fa fa-crosshairs" style="color:red;margin-right:5px;"></i>критичные </div><div class="fa-2x w3d text-right">4</div></div>
+				<div class="start_block_sm" style="border: 1px solid #ccc;border-top: 0;"><div class="fa-2x inc"><i class="fa fa fa-crosshairs" style="color:darkblue;margin-right:5px;"></i>не взято в работу </div><div class="fa-2x w3d text-right">7</div></div>
+			</div>
+			<div style="width: 100%;text-align: center; margin-top:10px;border: 1px solid #ddd;"><img src="/img/stat.png" style="width:100%;margin-bottom: 10px;"></div>
+		</div>
+		<div class="col-md-6 h100 pleft0" style="display: flex;flex-direction: column;">
+			<div style="flex-grow: 1;margin-bottom:10px;" class="white-bg">
+				<div class="col-md-6 h100 pleft0" style="padding-top:5px;">
+					<span data-v-24a3886a="" class="content-inner" style="display: flex;">
+						<span data-v-24a3886a="" class="left-pipet" style="height: 0;width: 0;border: 10px solid transparent;border-right: 15px solid #e5e5c6;position: static;"></span>
+						<span data-v-24a3886a="" class="message-content" style="margin-left: -7px;flex-grow: 1;border: none;border-radius: 10px;display: flex;flex-direction: column;width: 100%;background-color: #e5e5c6;position: static;">
+							<span data-v-24a3886a="" class="message-params" style="display: flex;color: steelblue;padding: 1px;padding-left: 5px;width: 100%;align-items: flex-end;">
+								<div data-v-24a3886a="" class="left" style="flex: 1;">
+									<div data-v-24a3886a="" title="ОУФП" class="name floatl pull-left">Иванов Александр</div><i class="fa fa-bell pull-right" style="margin:5px;color:gray;"></i>
+								</div>
+							</span>
+
+							<span data-v-24a3886a="" class="message-text" style="padding: 3px 0 3px;display: inline-block;word-wrap: break-word;vertical-align: middle;margin: 0 5px;white-space: pre-line;">
+								<span data-v-24a3886a="">Не забудьте отключить питание, когда будете уходить с проходной</span>
+								<div data-v-24a3886a="" class="rightmes" style="float: right;color: gray;padding-left: 4px;">
+									<span data-v-24a3886a="" class="message-date">17.05.2019 08:11</span>
+								</div>
+							</span>
+						</span>
+					</span>
+					<span data-v-24a3886a="" class="content-inner" style="display: flex;margin-top:10px;">
+						<span data-v-24a3886a="" class="left-pipet" style="height: 0;width: 0;border: 10px solid transparent;border-right: 15px solid #e5e5c6;position: static;"></span>
+						<span data-v-24a3886a="" class="message-content" style="margin-left: -7px;flex-grow: 1;border: none;border-radius: 10px;display: flex;flex-direction: column;width: 100%;background-color: #e5e5c6;position: static;">
+							<span data-v-24a3886a="" class="message-params" style="display: flex;color: steelblue;padding: 1px;padding-left: 5px;width: 100%;align-items: flex-end;">
+								<div data-v-24a3886a="" class="left" style="flex: 1;">
+									<div data-v-24a3886a="" title="ОУФП" class="name floatl pull-left">Сидорова Елена</div><i class="fa fa-bell pull-right" style="margin:5px;color:gray;"></i>
+								</div>
+							</span>
+
+							<span data-v-24a3886a="" class="message-text" style="padding: 3px 0 3px;display: inline-block;word-wrap: break-word;vertical-align: middle;margin: 0 5px;white-space: pre-line;">
+								<span data-v-24a3886a="">В понедельник решили устроить собрание по вопросам обеспечения бесперебойного питания в машзале</span>
+								<div data-v-24a3886a="" class="rightmes" style="float: right;color: gray;padding-left: 4px;">
+									<span data-v-24a3886a="" class="message-date">16.05.2019 17:41</span>
+								</div>
+							</span>
+						</span>
+					</span>
+					<span data-v-24a3886a="" class="content-inner" style="display: flex;margin-top:10px;">
+						<span data-v-24a3886a="" class="left-pipet" style="height: 0;width: 0;border: 10px solid transparent;border-right: 15px solid #e5e5c6;position: static;"></span>
+						<span data-v-24a3886a="" class="message-content" style="margin-left: -7px;flex-grow: 1;border: none;border-radius: 10px;display: flex;flex-direction: column;width: 100%;background-color: #e5e5c6;position: static;">
+							<span data-v-24a3886a="" class="message-params" style="display: flex;color: steelblue;padding: 1px;padding-left: 5px;width: 100%;align-items: flex-end;">
+								<div data-v-24a3886a="" class="left" style="flex: 1;">
+									<div data-v-24a3886a="" title="ОУФП" class="name floatl pull-left">Федоров Евгений</div><i class="fa fa-bell pull-right" style="margin:5px;color:gray;"></i>
+								</div>
+							</span>
+
+							<span data-v-24a3886a="" class="message-text" style="padding: 3px 0 3px;display: inline-block;word-wrap: break-word;vertical-align: middle;margin: 0 5px;white-space: pre-line;">
+								<span data-v-24a3886a="">Отчет составлять закончили, нужно только дополнить его последними сведениями перед отправкой</span>
+								<div data-v-24a3886a="" class="rightmes" style="float: right;color: gray;padding-left: 4px;">
+									<span data-v-24a3886a="" class="message-date">12.05.2019 12:03</span>
+								</div>
+							</span>
+						</span>
+					</span>
+				</div>
+				<div class="col-md-6 h100" style="border: 1px solid #ddd;">
+					<div data-v-3b0fe6a0="" tabindex="0" style="padding-top:10px;">
+						<div data-v-3b0fe6a0="" id="mailHeader"><span data-v-3b0fe6a0="" class="search_box_time"><i class="fa fa-envelope" style="margin-right:5px;"></i>Всего: 14606 &nbsp; Непрочтенных: 4</span></div> <table data-v-3b0fe6a0="" class="table table-condensed">
+							<tbody data-v-3b0fe6a0="">
+								<tr data-v-3b0fe6a0="">
+									<td data-v-3b0fe6a0="" class="borderbottom">
+										<div data-v-3b0fe6a0="" class="notif_box_info">
+											<div data-v-3b0fe6a0="" class="notif_box_title" style="max-height: 30px;">
+												<a data-v-3b0fe6a0="" target="_blank" href="https://mail.sopka.ru">
+													<span data-v-3b0fe6a0="">
+														Оплата за май
+													</span>
+												</a>
+											</div> <div data-v-3b0fe6a0="" class="notif_box_time">Атристова Марина - 16:04</div>
+										</div>
+									</td>
+								</tr>
+								<tr data-v-3b0fe6a0="">
+									<td data-v-3b0fe6a0="" class="borderbottom">
+										<div data-v-3b0fe6a0="" class="notif_box_info">
+											<div data-v-3b0fe6a0="" class="notif_box_title" style="max-height: 30px;">
+												<a data-v-3b0fe6a0="" target="_blank" href="https://mail.sopka.ru">
+													<span data-v-3b0fe6a0="">
+														Уведомление о поступивших требованиях ФНС
+													</span>
+												</a>
+											</div> <div data-v-3b0fe6a0="" class="notif_box_time">Автоматическая рассылка - 07:56</div>
+										</div>
+									</td>
+								</tr>
+								<tr data-v-3b0fe6a0="">
+									<td data-v-3b0fe6a0="" class="borderbottom">
+										<div data-v-3b0fe6a0="" class="notif_box_info">
+											<div data-v-3b0fe6a0="" class="notif_box_title" style="max-height: 30px;">
+												<a data-v-3b0fe6a0="" target="_blank" href="https://mail.sopka.ru">
+													<span data-v-3b0fe6a0="">
+														Бэкап 1 раз в неделю
+													</span>
+												</a>
+											</div> <div data-v-3b0fe6a0="" class="notif_box_time">Просторова Марина - 14:01</div>
+										</div>
+									</td>
+								</tr>
+								<tr data-v-3b0fe6a0="">
+									<td data-v-3b0fe6a0="" class="borderbottom">
+										<div data-v-3b0fe6a0="" class="notif_box_info">
+											<div data-v-3b0fe6a0="" class="notif_box_title" style="max-height: 30px;">
+												<a data-v-3b0fe6a0="" target="_blank" href="https://mail.sopka.ru">
+													<span data-v-3b0fe6a0="">
+														Re: СКБ Контур. Счет на оплату 7711111112-7720000001
+													</span>
+												</a>
+											</div> <div data-v-3b0fe6a0="" class="notif_box_time">Сергеенко Елена - 00:15</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+			<div> <img src="/img/map.png" style="height: 437px;padding-bottom: 10px;width: 100%;"></div>
+		</div>
+	</div>
+
+
+</div>*@
+
+<div id="mainpage-component"></div>
+
+<script src="~/dist/mainpage.js" asp-append-version="true"></script>
+
+
+
+
+

@@ -1,0 +1,328 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\RFX\\SOPKA\\SOPKA2019\\sopka\\sopka.csproj": {}
+  },
+  "projects": {
+    "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\JobServer.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\JobServer.Core.csproj",
+        "projectName": "JobServer.Core",
+        "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\JobServer.Core.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
+            "System.ServiceModel.Primitives": {
+              "target": "Package",
+              "version": "[4.5.3, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\PDFConverter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\PDFConverter.csproj",
+        "projectName": "PDFConverter",
+        "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\PDFConverter.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "dependencies": {
+            "Microsoft.Office.Interop.Excel": {
+              "target": "Package",
+              "version": "[15.0.4795.1000, )"
+            },
+            "Microsoft.Office.Interop.PowerPoint": {
+              "target": "Package",
+              "version": "[15.0.4420.1017, )"
+            },
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[15.0.4797.1003, )"
+            },
+            "NetOffice.Core": {
+              "target": "Package",
+              "version": "[1.7.3, )"
+            }
+          }
+        }
+      }
+    },
+    "G:\\RFX\\SOPKA\\SOPKA2019\\sopka\\sopka.csproj": {
+      "version": "1.0.1",
+      "restore": {
+        "projectUniqueName": "G:\\RFX\\SOPKA\\SOPKA2019\\sopka\\sopka.csproj",
+        "projectName": "sopka",
+        "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\sopka\\sopka.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "G:\\RFX\\SOPKA\\SOPKA2019\\sopka\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\Infrastructure\\Infrastructure.csproj"
+              },
+              "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\JobServer.Core.csproj": {
+                "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\JobServer.Core\\JobServer.Core.csproj"
+              },
+              "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\PDFConverter.csproj": {
+                "projectPath": "G:\\RFX\\SOPKA\\SOPKA2019\\PDFConverter\\PDFConverter.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[1.60.6, )"
+            },
+            "Dapper.Contrib": {
+              "target": "Package",
+              "version": "[1.60.1, )"
+            },
+            "Microsoft.AspNet.SignalR": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Stateless": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "System.Diagnostics.EventLog": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.3.1, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>sopka</name>
+    </assembly>
+    <members>
+        <member name="T:sopka.Controllers.InventoryController">
+            <summary>
+            Инвентаризация КИИ
+            </summary>
+        </member>
+        <member name="M:sopka.Controllers.InventoryController.StoreEquipment(sopka.Models.ContextModels.Equipment)">
+            <summary>
+            Сохранение оборудования
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.HttpContextExtentions.IsAjaxRequest(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Является ли запрос типа Ajax
+            </summary>
+            <param name="request">Запрос</param>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Helpers.Log4Net.Log4NetAspExtensions">
+            <summary>
+            Вспомогательный класс для логирования Log4Net
+            </summary>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.ConfigureLog4Net(System.String,Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Метод выполняет конфигурацию логгера
+            </summary>
+            <param name="connectionString">Строка подключения к БД</param>
+            <param name="section">Секция с параметрами логера</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.CreateFileLogAppender(Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.String)">
+            <summary>
+            Настройка log4net дла логирования в файл
+            </summary>
+            <param name="environment"></param>
+            <param name="logDir">Путь к папке в которой будут храниться логи</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.Net2Log4NetLevel(System.String)">
+            <summary>
+            Метод для конвертации Core степеней логирования в Log4Net степень
+            </summary>
+            <param name="logLevel">Степень логирования</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.ConfigureFilters(Microsoft.Extensions.Configuration.IConfigurationSection,log4net.Repository.Hierarchy.Hierarchy,log4net.Appender.IAppender)">
+            <summary>
+            Метод выполняет конфигурацию
+            </summary>
+            <param name="configSection">Секция с параметрами логера</param>
+            <param name="hierarchy">Иерархия организации логеров</param>
+            <param name="appenders">Провайдер сохранения логов в БД</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Добавление провайдера к фабрике
+            </summary>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="T:sopka.Models.ContextModels.Article">
+            <summary>
+            Статья в базе знаний
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.ArticleFolder">
+            <summary>
+            Папка базы знаний
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Mask">
+            <summary>
+            Маска
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Gateway">
+            <summary>
+            Шлюз
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.CPUCount">
+            <summary>
+            Количество процесоров
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.BlockingRecommendations">
+            <summary>
+            Рекомендации по блокировке
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.MitigationRecommendations">
+            <summary>
+            Рекомендации по устранению последствий
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.PreventionRecommendations">
+            <summary>
+            Рекомендации по предотвращению подобный инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.RelatedIncidents">
+            <summary>
+            Инциденты, НА которые ссылается текущий
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.RelatedIncidentOf">
+            <summary>
+            Инциденты, которые ссылаются НА текущий
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.Memory">
+            <summary>
+            Память
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ObjectName">
+            <summary>
+            Название объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ObjectAddress">
+            <summary>
+            Адрес объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPerson">
+            <summary>
+            Контактное лицо
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPosition">
+            <summary>
+            Должность
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPhone">
+            <summary>
+            Телефон
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactMail">
+            <summary>
+            E-mail
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.IdType">
+            <summary>
+            Id типа объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.IdBranch">
+            <summary>
+            Id филиал
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.OperationSystem">
+            <summary>
+            Операционная система
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Regulations">
+            <summary>
+            Нормативные документы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Research">
+            <summary>
+            Исследования
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Incidents">
+            <summary>
+            Инциденты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Resources">
+            <summary>
+            Ресурсы
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Enum.IsMainAction">
+            <summary>
+            Данным атирибутом необходимо помечать действия успешного или неудачного редактирования свойств или удаления сущности 
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Enum.LogActions">
+            <summary>
+            Типы действий пользователя
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.Position">
+            <summary>
+            Позиция условия в порядке выполнения
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.ErrorBody">
+            <summary>
+            Тело условия
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.ErrorsNumber">
+            <summary>
+            Количество ошибок
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.PeriodLength">
+            <summary>
+            Длина периода ошибок
+            </summary>
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.EquipmentLogRuleState">
+            Состояние правила обработки журналов оборудования 
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.Rule">
+            <summary>
+            Правило обработки журналов оборудования
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.One">
+            <summary>
+            Хотя бы одно 
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.All">
+            <summary>
+            Все
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.AllInParticularOrder">
+            <summary>
+            Все в определенном порядке
+            </summary>
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.Rule.ActionType">
+            <summary>
+            Тип действия
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Filters.EquipmentFilterByColumn">
+            <summary>
+            Фильтр по столбцам таблицы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Name">
+            <summary>
+            Название оборудования
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.TypeName">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Platform">
+            <summary>
+            Аппаратная платформа
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Vlan">
+            <summary>
+            Сегмент (Vlan)
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Objects">
+            <summary>
+            Объекты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Equipment">
+            <summary>
+            Оборудование
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Devices">
+            <summary>
+            Устройства
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.HDD">
+            <summary>
+            Жесткие диски
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Memory">
+            <summary>
+            Память
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.OperationSystems">
+            <summary>
+            Операционные системы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Software">
+            <summary>
+            Прикладное ПО
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Incidents">
+            <summary>
+            Инциденты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentStatuses">
+            <summary>
+            Статусы инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentStatusTransitions">
+            <summary>
+            Переходы между статусами инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentRelations">
+            <summary>
+            Связи между инцидентами
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.EquipmentLogRules">
+            <summary>
+            Правила обработки журналов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.EquipmentLogRuleConditions">
+            <summary>
+            Условия правил обработки журналов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Vulnerabilities">
+            <summary>
+            Уязвимости
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Location">
+            <summary>
+            Размещение
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Mask">
+            <summary>
+            Маска
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Gateway">
+            <summary>
+            Шлюз
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="T:sopka.Services.CurrentUser">
+            <summary>
+            Класс для работы с текущим пользователем
+            </summary>
+        </member>
+        <member name="M:sopka.Services.Email.EmailService.SendResetPassword(System.String,System.String)">
+            <summary>
+            Отправка письма для сброса пароля
+            </summary>
+            <param name="to">email</param>
+            <param name="resetUrl">Ссылка на сброc пароля</param>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.Accumulator">
+            <summary>
+            Состояние выполнения правила
+            </summary>
+        </member>
+        <member name="F:sopka.Services.EquipmentLogMatcher.Accumulator._events">
+            <summary>
+            Словарь совпадений - Id лога : дата совпадения
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.Increment(System.Int32,System.Nullable{System.Int64})">
+            <summary>
+            Добавлене сработавшего события
+            </summary>
+            <param name="logId">Идентификатор лога</param>
+            <param name="eventTimestamp">Дата события, если нужны. Без агрумента будет считаться по серверному времени</param>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.ClearOutdated">
+            <summary>
+            Убирает совпадения, которые уже не помещаются в заданный период
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.Reset">
+            <summary>
+            Сброс в начальное состояние
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.ConditionExpressionParser.ExtractExpression(System.String,System.Int32)">
+            <summary>
+            Достает подстроку выражения 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus">
+            <summary>
+            Шина обмена сообщениями с фоновыми задачами
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.Rules">
+            <summary>
+            Данные обновления правил
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.RuleActions">
+            <summary>
+            Данные планируемых действий
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.LogQueue">
+            <summary>
+            Данные логов
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.RenewRules">
+            <summary>
+            Обновление действующих правил
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.StoreState">
+            <summary>
+             Сохранение текущего состояния правил в базу 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.RestoreState">
+            <summary>
+            Восстановление состояния правил из базы
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.RuleAction">
+            <summary>
+            Результат матчинга правила с логами
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleActionsProcessService.ProcessActions(sopka.Services.EquipmentLogMatcher.RuleAction,sopka.Services.Email.EmailService,sopka.Services.IncidentService)">
+            <summary>
+            Обработка результата действия - фактическая отправка письма или создание инцидента
+            </summary>
+            <param name="action"></param>
+            <param name="emailService"></param>
+            <param name="incidentService"></param>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllInParticularOrder.MoveNext">
+            <summary>
+            Обходит условия до первого не выполняющегося
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllMatcher.MoveNext">
+            <summary>
+            Всегда обходит все условия
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllMatcher.IsTriggered(System.Boolean)">
+            <summary>
+            Правило считается сработавшим, если в течение заданного интервала срабатывали все условия
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AtLeastOneMatcher.MoveNext">
+            <summary>
+            Обходит условия до первого выполняющегося
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.Process(sopka.Models.EquipmentLogs.EquipmentLog)">
+            <summary>
+            Вычисления совпадения правила 
+            </summary>
+            <param name="log">Запись лога оборудования</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.ClearOutdated">
+            <summary>
+            Очистка устаревших совпадений
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.MoveNext">
+            <summary>
+            Перемещение к следующему условию для проверки
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.IsTriggered(System.Boolean)">
+            <summary>
+            Сработало ли всё правило
+            </summary>
+            <param name="clearOutdatedFirst">Предварительное очищение устаревших данных</param>
+            <remarks>
+            Если метод вызывается не во время обработки логов,
+            нужно установить флаг предварительной очистки для получения правильного результата
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.FileService.NormalizeFilename(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Выдает не повторящееся имя для файла 
+            </summary>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.AttachIncident(System.Int32,System.Int32)">
+            <summary>
+            Указание, что статья из базы знаний решает инцидент
+            </summary>
+            <param name="articleId"></param>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.DetachIncident(System.Int32,System.Int32)">
+            <summary>
+            Удаление связи между инцидентов и статьей
+            </summary>
+            <param name="articleId"></param>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.GetAttachedArticles(System.Int32)">
+            <summary>
+            Получение списка связанных статей
+            </summary>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.GetAttachedIncidents(System.Int32)">
+            <summary>
+            Получение списка связанных инцидентов
+            </summary>
+            <param name="articleId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.PasswordGenerator">
+            <summary>
+            Класс, реализующий генератор случайных паролей на основании параметров валидации
+            </summary>
+        </member>
+        <member name="M:sopka.Services.PasswordGenerator.#ctor(Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Identity.IdentityOptions})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="identityOptions">Параметры валидации паролей</param>
+        </member>
+        <member name="M:sopka.Services.PasswordGenerator.Get">
+            <summary>
+            Метод для генерации случайного пароля
+            </summary>
+            <returns>Пароль</returns>
+        </member>
+        <member name="M:sopka.Startup.TryCreateDefaultRolesAndUsers(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Конфигурация ролей и пользователей по умолчанию
+            </summary>
+            <param name="app">Провайдер конфигурации конвеера запросов</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>sopka</name>
+    </assembly>
+    <members>
+        <member name="T:sopka.Controllers.InventoryController">
+            <summary>
+            Инвентаризация КИИ
+            </summary>
+        </member>
+        <member name="M:sopka.Controllers.InventoryController.StoreEquipment(sopka.Models.ContextModels.Equipment)">
+            <summary>
+            Сохранение оборудования
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetUserOnlineStatus(System.String)">
+            <summary>
+            Получить онлайн статус пользователя
+            </summary>
+            <param name="userId">номер пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetUserOnlineStatusByName(System.String)">
+            <summary>
+            Получить онлайн статус пользователя
+            </summary>
+            <param name="userName">имя пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetMessages(System.Int32,System.Nullable{System.Int32},System.Int32,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Получить список сообщений
+            </summary>
+            <param name="take">размер буфера</param>
+            <param name="from">номер сообщения, дата которого задает границу для загрузки более старых сообщений</param>
+            <param name="conversationId">номер чата</param>
+            <param name="messageId">номер сообщения, которое необходимо включить в список загруженных сообщенй (используется для поиска)</param>
+            <param name="showUnread">включить в список все непрочитанные сообщения</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetUnreadCount">
+            <summary>
+            Получить количество непрочитанных сообщений
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetContactList(sopka.Services.Chat.ContactType,System.Boolean)">
+            <summary>
+            Получить список контактов
+            </summary>
+            <param name="type">тип контактов (фильтр)</param>
+            <param name="includeConversation">добавить к каждому контакту приватный чат (если такой существует)</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetConversations">
+            <summary>
+            Получить все чата, в которых присутствует данный пользователь
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetAttachments(System.Int32)">
+            <summary>
+            Получить список прикрепленных файлов в разрезе одного чата
+            </summary>
+            <param name="conversationId">номер чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.SearchMessages(System.Int32,System.String)">
+            <summary>
+            Найти сообщения в разрезе одного чата
+            </summary>
+            <param name="conversationId">номер чата</param>
+            <param name="term">параметр поиска</param>
+            <returns>массив номеров сообщений</returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.SeenMessages(sopka.Services.Chat.ReadMessagesModel)">
+            <summary>
+            Прочитать сообщения
+            </summary>
+            <param name="model">список сообщений</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.Send(sopka.Models.ContextModels.Chat.ConversationMessage)">
+            <summary>
+            Отправить сообщение
+            </summary>
+            <param name="model">сообщение</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.GetConversation(sopka.Services.Chat.GetOrCreateConversationModel)">
+            <summary>
+            Получить номер существующего чата или создать шаблон для новой
+            </summary>
+            <param name="model">параметры чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.CreateConversation(sopka.Services.Chat.ConversationRequestModel)">
+            <summary>
+            Создать чат
+            </summary>
+            <param name="model">параметры чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.ChangeConversationName(System.Int32,System.String)">
+            <summary>
+            Изменить имя чата
+            </summary>
+            <param name="conversationId">номер чата</param>
+            <param name="name">новое имя чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.AddUsersToConversation(sopka.Services.Chat.ConversationRequestModel)">
+            <summary>
+            Добавить пользователь в чат
+            </summary>
+            <param name="model">пользователи + параметры чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.RemoveUserFromConversation(System.Int32)">
+            <summary>
+            Исключить участника чата из чата
+            </summary>
+            <param name="conversationUserId">номер участника чата</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.EditPermissions(System.Int32,System.Boolean)">
+            <summary>
+            Отредактировать специальные права участника чата
+            </summary>
+            <param name="userId">номер участника чата</param>
+            <param name="isAdmin">значение специальных прав</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Controllers.MessengerController.TestCreateMessagesForUsers(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Сгенерировать определенное кол-во сообщений (для тестирования)
+            </summary>
+            <param name="text">текст сообщения</param>
+            <param name="count">кол-во сообщений</param>
+            <param name="originatorId">инициатор (номер пользователя)</param>
+            <param name="receiverId">получатель (номер пользователя)</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.HttpContextExtentions.IsAjaxRequest(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Является ли запрос типа Ajax
+            </summary>
+            <param name="request">Запрос</param>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Helpers.Log4Net.Log4NetAspExtensions">
+            <summary>
+            Вспомогательный класс для логирования Log4Net
+            </summary>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.ConfigureLog4Net(System.String,Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Метод выполняет конфигурацию логгера
+            </summary>
+            <param name="connectionString">Строка подключения к БД</param>
+            <param name="section">Секция с параметрами логера</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.CreateFileLogAppender(Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.String)">
+            <summary>
+            Настройка log4net дла логирования в файл
+            </summary>
+            <param name="environment"></param>
+            <param name="logDir">Путь к папке в которой будут храниться логи</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.Net2Log4NetLevel(System.String)">
+            <summary>
+            Метод для конвертации Core степеней логирования в Log4Net степень
+            </summary>
+            <param name="logLevel">Степень логирования</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.ConfigureFilters(Microsoft.Extensions.Configuration.IConfigurationSection,log4net.Repository.Hierarchy.Hierarchy,log4net.Appender.IAppender)">
+            <summary>
+            Метод выполняет конфигурацию
+            </summary>
+            <param name="configSection">Секция с параметрами логера</param>
+            <param name="hierarchy">Иерархия организации логеров</param>
+            <param name="appenders">Провайдер сохранения логов в БД</param>
+        </member>
+        <member name="M:sopka.Helpers.Log4Net.Log4NetAspExtensions.AddLog4Net(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Добавление провайдера к фабрике
+            </summary>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="T:sopka.Helpers.WebHelper">
+            <summary>
+            Помощник для работы с Web
+            </summary>
+        </member>
+        <member name="M:sopka.Helpers.WebHelper.GetConnectionId(Microsoft.AspNetCore.Mvc.Controller)">
+            <summary>
+            Получение идентификатора соединения
+            </summary>
+            <param name="ctrl">Контроллер</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.WebHelper.GetConnectionId(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Получение идентификатора соединения
+            </summary>
+            <param name="request">Запрос</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.WebHelper.ToByteArray(System.IO.Stream)">
+            <summary>
+            Преобразование потока в набор байт
+            </summary>
+            <param name="stream">Поток</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Helpers.WebHelper.GetBodyData(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Получение тела запроса
+            </summary>
+            <param name="request">Запрос</param>
+            <returns></returns>
+        </member>
+        <member name="P:sopka.Models.ServiceActionResult.Entity">
+            <summary>
+            Сущность
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ServiceActionResult.EntityId">
+            <summary>
+            Идентификатор сущности
+            </summary>
+        </member>
+        <member name="M:sopka.Models.ServiceActionResult.GetSuccess(System.Nullable{System.Int32},System.Object)">
+            <summary>
+            Метод выполняет создание объекта успешного выполнения операции
+            </summary>
+            <param name="entityId">Идентификатор сущности</param>
+            <param name="entity">Сущность</param>
+            <returns>Результат выполнения операции</returns>
+        </member>
+        <member name="T:sopka.Models.ContextModels.Article">
+            <summary>
+            Статья в базе знаний
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.ArticleFolder">
+            <summary>
+            Папка базы знаний
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.ChatType">
+            <summary>Тип чата - obj.Int1</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.CustomName">
+            <summary>Собственное наименование - obj.Str5</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.EntityEventTypeId">
+            <summary>Тип сущности - obj.Int0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.IsActive">
+            <summary>Активный чат - obj.Bit1</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.IsGroup">
+            <summary>Групповой чат - obj.Bit0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.SysTopic">
+            <summary>Системный идентификатор чата - obj.Str6</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.TopicEventId">
+            <summary>Основание для чата (сущность Event) - obj.ParentId</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.Conversation.TopicRefId">
+            <summary>Основание для чата (сущность Reference) - obj.ReferenceId</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.ConversationId">
+            <summary>Id чата - obj.ParentId</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.FileName">
+            <summary>Название файла - obj.Str0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.HasAttachments">
+            <summary>Есть приложенные файлы - obj.Bit0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.IsEmergency">
+            <summary>Служебное сообщение - obj.Bit1</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.IsSilent">
+            <summary>Не учитывать в счетчиках новых сообщений - obj.Bit2</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.OriginatorId">
+            <summary>Id участника чата (ConversationUser) - obj.BigInt0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.Text">
+            <summary>Текст сообщения - obj.Description</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessage.ToUsers">
+            <summary>Пользователи, которым доступно данное сообщение - attr.ToUsers</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessageStatus.ConversationId">
+            <summary>Id чата - obj.ParentId</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessageStatus.ConversationUserId">
+            <summary>Id участника чата (ConversationUser) - obj.BigInt0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessageStatus.MessageId">
+            <summary>Id сообщения чата - obj.BigInt1</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationMessageStatus.Status">
+            <summary>Статус просмотра (доставлен, просмотрен)</summary>
+        </member>
+        <member name="M:sopka.Models.ContextModels.Chat.ConversationMessageStatus.SetStatus(sopka.Services.Chat.MessageStatus)">
+            <summary>
+            Метод выполняет присвоение статуса
+            </summary>
+            <param name="status"></param>
+        </member>
+        <member name="M:sopka.Models.ContextModels.Chat.ConversationMessageStatus.GetStatus">
+            <summary>
+            Метод возвращает текущий статус
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.ConversationId">
+            <summary>Id чата - obj.ParentId</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.IsActive">
+            <summary>Активен - obj.Bit2</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.IsAdmin">
+            <summary>Спец права - obj.Bit1</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.IsStarter">
+            <summary>Начал чат - obj.Bit0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.LastConversationViewDate">
+            <summary>Дата последнего просмотра чата - obj.SendDate</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Chat.ConversationUser.Name">
+            <summary>Имя пользователя - obj.Str0</summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Mask">
+            <summary>
+            Маска
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Gateway">
+            <summary>
+            Шлюз
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Device.CPUCount">
+            <summary>
+            Количество процесоров
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.EquipmentListItem.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.BlockingRecommendations">
+            <summary>
+            Рекомендации по блокировке
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.MitigationRecommendations">
+            <summary>
+            Рекомендации по устранению последствий
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.PreventionRecommendations">
+            <summary>
+            Рекомендации по предотвращению подобный инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.RelatedIncidents">
+            <summary>
+            Инциденты, НА которые ссылается текущий
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Incident.RelatedIncidentOf">
+            <summary>
+            Инциденты, которые ссылаются НА текущий
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.Memory">
+            <summary>
+            Память
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ObjectName">
+            <summary>
+            Название объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ObjectAddress">
+            <summary>
+            Адрес объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPerson">
+            <summary>
+            Контактное лицо
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPosition">
+            <summary>
+            Должность
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactPhone">
+            <summary>
+            Телефон
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.ContactMail">
+            <summary>
+            E-mail
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.IdType">
+            <summary>
+            Id типа объекта
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.ObjectEntry.IdBranch">
+            <summary>
+            Id филиал
+            </summary>
+        </member>
+        <member name="T:sopka.Models.ContextModels.OperationSystem">
+            <summary>
+            Операционная система
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Regulations">
+            <summary>
+            Нормативные документы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Research">
+            <summary>
+            Исследования
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Incidents">
+            <summary>
+            Инциденты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ContextModels.Vulnerability.Resources">
+            <summary>
+            Ресурсы
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Enum.IsMainAction">
+            <summary>
+            Данным атирибутом необходимо помечать действия успешного или неудачного редактирования свойств или удаления сущности 
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Enum.LogActions">
+            <summary>
+            Типы действий пользователя
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.Position">
+            <summary>
+            Позиция условия в порядке выполнения
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.ErrorBody">
+            <summary>
+            Тело условия
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.ErrorsNumber">
+            <summary>
+            Количество ошибок
+            </summary>
+        </member>
+        <member name="P:sopka.Models.EquipmentLogs.Rules.Condition.PeriodLength">
+            <summary>
+            Длина периода ошибок
+            </summary>
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.EquipmentLogRuleState">
+            Состояние правила обработки журналов оборудования 
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.Rule">
+            <summary>
+            Правило обработки журналов оборудования
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.One">
+            <summary>
+            Хотя бы одно 
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.All">
+            <summary>
+            Все
+            </summary>
+        </member>
+        <member name="F:sopka.Models.EquipmentLogs.Rules.Rule.ConditionType.AllInParticularOrder">
+            <summary>
+            Все в определенном порядке
+            </summary>
+        </member>
+        <member name="T:sopka.Models.EquipmentLogs.Rules.Rule.ActionType">
+            <summary>
+            Тип действия
+            </summary>
+        </member>
+        <member name="T:sopka.Models.Filters.EquipmentFilterByColumn">
+            <summary>
+            Фильтр по столбцам таблицы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Name">
+            <summary>
+            Название оборудования
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.TypeName">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Platform">
+            <summary>
+            Аппаратная платформа
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.Filters.EquipmentFilterByColumn.Vlan">
+            <summary>
+            Сегмент (Vlan)
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Objects">
+            <summary>
+            Объекты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Equipment">
+            <summary>
+            Оборудование
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Devices">
+            <summary>
+            Устройства
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.HDD">
+            <summary>
+            Жесткие диски
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Memory">
+            <summary>
+            Память
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.OperationSystems">
+            <summary>
+            Операционные системы
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Software">
+            <summary>
+            Прикладное ПО
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Incidents">
+            <summary>
+            Инциденты
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentStatuses">
+            <summary>
+            Статусы инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentStatusTransitions">
+            <summary>
+            Переходы между статусами инцидентов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.IncidentRelations">
+            <summary>
+            Связи между инцидентами
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.EquipmentLogRules">
+            <summary>
+            Правила обработки журналов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.EquipmentLogRuleConditions">
+            <summary>
+            Условия правил обработки журналов
+            </summary>
+        </member>
+        <member name="P:sopka.Models.SopkaDbContext.Vulnerabilities">
+            <summary>
+            Уязвимости
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Location">
+            <summary>
+            Размещение
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.NetworkName">
+            <summary>
+            Имя в сети
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.IP">
+            <summary>
+            IP адрес
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Mask">
+            <summary>
+            Маска
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Gateway">
+            <summary>
+            Шлюз
+            </summary>
+        </member>
+        <member name="P:sopka.Models.ViewModels.EquipmentViewModel.Vlan">
+            <summary>
+            Сегмент
+            </summary>
+        </member>
+        <member name="T:sopka.Services.Chat.ChatTypeEnum">
+            <summary>
+            Состояние события
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.ChatTypeEnum.Undefined">
+            <summary>
+            Не указано
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.ChatTypeEnum.Any">
+            <summary>
+            Все
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.ChatTypeEnum.Creators">
+            <summary>
+            Создатель
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.ChatTypeEnum.Editors">
+            <summary>
+            Изменившие
+            </summary>
+        </member>
+        <member name="T:sopka.Services.Chat.ContactType">
+            <summary>
+            Перечисление типов контактов
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.ContactType.All">
+            <summary>
+            Все
+            </summary>
+        </member>
+        <member name="T:sopka.Services.Chat.ContactViewModel">
+            <summary>
+            Модель представления контакта
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ContactViewModel.Id">
+            <summary>
+            Идентификационный номер пользователя
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ContactViewModel.UserName">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ContactViewModel.IsOnline">
+            <summary>
+            true - online, false - offline
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ContactViewModel.Conversation">
+            <summary>
+            Параметры текущего чата
+            </summary>
+        </member>
+        <member name="M:sopka.Services.Chat.ContactViewModel.#ctor">
+            <summary>
+            Создание объекта
+            </summary>
+        </member>
+        <member name="T:sopka.Services.Chat.ConversationViewModel">
+            <summary>
+            Класс описывает участников и дополнительные параметры чата
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.Entity">
+            <summary>
+            Чат
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.Users">
+            <summary>
+            Участники чата
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.LocalOriginatorId">
+            <summary>
+            Инициатор чата
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.UnreadCount">
+            <summary>
+            Количество непрочитанных сообщений
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.EmergencyMessage">
+            <summary>
+            Служебное сообщение
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.LastActionDate">
+            <summary>
+            Дата последней активности
+            </summary>
+        </member>
+        <member name="P:sopka.Services.Chat.ConversationViewModel.ReadOnly">
+            <summary>
+            Доступно ли добавление сообщений в чат в текущий момент для пользователя
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.MessageStatus.Delivered">
+            <summary>
+            доставлено
+            </summary>
+        </member>
+        <member name="F:sopka.Services.Chat.MessageStatus.Seen">
+            <summary>
+            Просмотрен
+            </summary>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetMessages(System.Int32,System.Nullable{System.Int32},System.Int32,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Получить список сообщений по указанной чату
+            </summary>
+            <param name="take">сколько сообщений загрузить</param>
+            <param name="fromMessageId">загрузить с определенного сообщения, не включая</param>
+            <param name="conversationId">ID чата</param>
+            <param name="messageId">ID сообщения, которое должно обязательно попасть в список</param>
+            <param name="showUnread">обязательно показать первое непрочитанное сообщение</param>
+            <returns>Список сообщений, обвернутый в ServiceActionResult</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetChunkOfMessages(System.Int32,System.Int32,System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},System.Int32)">
+            <summary>
+            Получить часть сообщений
+            </summary>
+            <param name="take">Размер буфера</param>
+            <param name="conversationId">Номер чата</param>
+            <param name="from">Взять сообщения, дата которых меньше указанной</param>
+            <param name="mustInclude">Должно включать дату</param>
+            <param name="currentConversationUserId"></param>
+            <returns>Список сообщений</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetMessage(System.Int32)">
+            <summary>
+            Загрузить сообщение
+            </summary>
+            <param name="messageId">ID сообщения</param>
+            <returns>Экземпляр сообщения</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.SearchMessagesInConversation(System.Int32,System.String)">
+            <summary>
+            Выполнить поиск сообщений в чате
+            </summary>
+            <param name="conversationId">ID чата</param>
+            <param name="term">Строка, по которой искать</param>
+            <returns>Массив ID сообщений</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetAttachments(System.Int32)">
+            <summary>
+            Получить все прикрепленные файлы по определенное чату
+            </summary>
+            <param name="conversationId">ID чата</param>
+            <returns>Коллекция прикрепленных файлов</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetContactList(System.Security.Claims.ClaimsPrincipal,sopka.Services.Chat.ContactType,System.Boolean)">
+            <summary>
+            Получить список контактов
+            </summary>
+            <param name="user">текущий пользователь</param>
+            <param name="type">тип пользователей</param>
+            <param name="includeConversation">добавить чаты к результату</param>
+            <returns>Коллекция контактов</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationViewModels">
+            <summary>
+            Получить все чаты текущего пользователя в удобном для мессенджера виде
+            </summary>
+            <returns>Коллекция чатов</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationById(System.Int32)">
+            <summary>
+            Получить чат
+            </summary>
+            <param name="id">ID чата</param>
+            <returns>чат</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationsByIds(System.Int32[])">
+            <summary>
+            Получить список чатов
+            </summary>
+            <param name="ids">Массив ID чатов</param>
+            <returns>Список чатов</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationViewModelById(System.Int32)">
+            <summary>
+            Получить чат в удобном для мессенджера виде
+            </summary>
+            <param name="id">Номер чата</param>
+            <returns>чат</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationsByUserId(System.String,System.Boolean)">
+            <summary>
+            Загрузить чаты пользователя
+            </summary>
+            <param name="userId">Id пользователя</param>
+            <param name="includeGroups">включить ли групповые (больше 2х человек) чата</param>
+            <returns>Список чатов</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationUsers(System.Boolean,System.Int32[])">
+            <summary>
+            Получить список участников
+            </summary>
+            <param name="userDetails">добавить все информацию по пользователям</param>
+            <param name="conversationIds">Id чата</param>
+            <returns>Список участников</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.SetConvUserOptionalFields(sopka.Models.ContextModels.Chat.ConversationUser,System.ValueTuple{System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String}})">
+            <summary>
+            Выставить дополнительные поля для участника чата
+            </summary>
+            <param name="convUser">Участник чата</param>
+            <param name="ext">ГЦОУ/ЦОУ, подразделения, департаменты</param>
+            <returns>Участник чата</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.SetConvUserOptionalFields(sopka.Models.ContextModels.Chat.ConversationUser)">
+            <summary>
+            Выставить дополнительные поля для участника чата
+            </summary>
+            <param name="convUser">Участник чата</param>
+            <returns>Участник чата</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.CreateConversation(System.String[],System.Int32[],System.Nullable{System.Int64},System.Nullable{System.Int32},System.String,sopka.Services.Chat.ChatTypeEnum,System.Boolean)">
+            <summary>
+            Создать чат или вернуть номер существующего
+            </summary>
+            <param name="userIds">Массив ID пользователей</param>
+            <param name="orgIds">Массив ID организаций, из которых необходимо добавить людей в чат</param>
+            <param name="entityId">Номер сущности</param>
+            <param name="typeId">Тип сущности</param>
+            <param name="connectionId">ID соединения</param>
+            <param name="createConversation">Создать ли чат (по-умолчанию false)</param>
+            <returns>Предварительная модель для создания чата</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetConversationByReference(System.Int32[],System.Nullable{System.Int64},System.Nullable{System.Int64},sopka.Services.Chat.ChatTypeEnum)">
+            <summary>
+            Получить чат, привязанную к определенной сущности
+            </summary>
+            <param name="refId">ID сущности из таблицы Reference</param>
+            <param name="eventId">ID сущности из таблицы Events</param>
+            <returns>чат</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.CreateConversation(System.String[],System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int32},System.String,System.String,sopka.Services.Chat.ChatTypeEnum,System.Boolean)">
+            <summary>
+            Создать чат
+            </summary>
+            <param name="userIds">Массив ID пользователей</param>
+            <param name="referenceId">ID сущности, находящейся в таблице Reference</param>
+            <param name="eventId">ID сущности, находящейся в таблице Events</param>
+            <param name="eventTypeId">Тип сущности</param>
+            <param name="topicName">Название чата</param>
+            <param name="connectionId">ID соединения</param>
+            <param name="notifyMe">Прислать экземпляр бесеы инициатору посредством SignalR</param>
+            <returns>ServiceActionResult</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.ChangeConversationName(System.Int32,System.String,System.String)">
+            <summary>
+            Изменить название чата
+            </summary>
+            <param name="conversationId">ID чата</param>
+            <param name="name">Новое название</param>
+            <param name="connectionId">ID соединения</param>
+            <returns>Произошло ли изменение названия</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.AddUsersToConversation(System.Int32,System.String,System.String[])">
+            <summary>
+            Добавить новых пользователей в чат
+            </summary>
+            <param name="conversationId">ID чата</param>
+            <param name="connectionId">ID соединения</param>
+            <param name="userIds">Массив ID участников</param>
+            <returns>Список новых участников чата</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.EditPermissions(System.Int32,System.Boolean,System.String)">
+            <summary>
+            Изменить специальные права у участника чата
+            </summary>
+            <param name="conversationUserId">ID участника чата</param>
+            <param name="isAdmin">Сделать ли пользователя админом</param>
+            <param name="connectionId">ID соединения</param>
+            <returns>Выполнилась ли операция</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.RemoveUserFromConversation(System.Int32,System.String)">
+            <summary>
+            Удалить пользователя из чата
+            </summary>
+            <param name="conversationUserId">ID участника чата</param>
+            <param name="connectionId">ID соединения</param>
+            <returns>Выполнилась ли операция</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.CreateEmergency(System.String,System.Int32,System.Int32,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Отправить служебное уведомление
+            </summary>
+            <param name="text">Текст уведомления</param>
+            <param name="originatorId">Инициатор (пользователь чата)</param>
+            <param name="conversationId">Номер чата</param>
+            <param name="connectionId"></param>
+            <param name="forUser">идентификаторы пользователей - получателей сообщения</param>
+            <param name="isSilent">не учитывать в счетчиках непрочитанных сообщений</param>
+            <param name="ignoreOnClient">игнорировать на клиенте из которого инициировано отправление</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.Send(sopka.Models.ContextModels.Chat.ConversationMessage,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile},System.String,System.Boolean)">
+            <summary>
+            Записать в ПОС новое сообщение
+            </summary>
+            <param name="message">Сообщение</param>
+            <param name="newFiles">Прикрепленные файлы</param>
+            <param name="connectionId">ID соединения</param>
+            <param name="notifyMe">Отправить созданное сообщение инициатору посредством SignalR (по-умолчанию false)</param>
+            <returns>ServiceActionResult</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.SetMessageStatus(System.Int32[],System.Int32,System.String,System.Int32,System.String,sopka.Services.Chat.MessageStatus)">
+            <summary>
+            Выставить статусы по следующим сообщениям
+            </summary>
+            <param name="messageIds">id сообщений</param>
+            <param name="userId">id пользователя участника чата</param>
+            <param name="conversationId">id чата</param>
+            <param name="conversationUserId">id участинка чата</param>
+            <param name="connection"></param>
+            <param name="status">конечный статус</param>
+            <returns>ServiceActionResult</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.DeliveryMessagesForCurrentUser(System.String,System.String)">
+            <summary>
+            Выставить статус Delivery для всех непрочитанных сообщений для текущего пользователя (вызывается в момент аутентификации пользователя)
+            </summary>
+            <param name="connectionId">ID соединения</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.UpdateConversationUserViewDate(System.Int32,System.String)">
+            <summary>
+            Обновить у пользователя дату послденего взаимодействия с чатом
+            </summary>
+            <param name="convUserId"> ID участника чата</param>
+            <param name="connectionId">ID соединения</param>
+            <returns>ReceiveBasePointResult</returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.NotifyConversationChanged(System.Int32,System.String)">
+            <summary>
+            Отправить подписчикам уведомление об обновлении параметров чата
+            </summary>
+            <param name="conversationId">ID чата</param>
+            <param name="connectionId">ID соединения</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.NotifyConversationChanged(sopka.Services.Chat.ConversationViewModel,System.String)">
+            <summary>
+            Отправить подписчикам уведомление об обновлении параметров чата
+            </summary>
+            <param name="conversation">Экзмепляр чата</param>
+            <param name="connectionId">ID соединения</param>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.NotifyMessageStatusUpdated(sopka.Models.ContextModels.Chat.ConversationMessageStatus,System.String)">
+            <summary>
+            Отправить подписчикам уведомление об изменении статуса сообщения
+            </summary>
+            <param name="status">Экземпляр статуса сообщения</param>
+            <param name="connectionId">ID соединения</param>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.NotifyNewMessage(sopka.Services.Chat.MessageViewModel,System.String)">
+            <summary>
+            Отправить подписчикам уведомления об новом сообщении
+            </summary>
+            <param name="message">Экзепляр сообщения</param>
+            <param name="connectionId">ID соединения</param>
+        </member>
+        <member name="M:sopka.Services.Chat.MessengerService.GetUnreadCount">
+            <summary>
+            Получить количество непрочитанных сообщений
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:sopka.Services.Chat.MessengerNotification.NotificationData">
+            <summary>Данные оповещения - obj.Description</summary>
+        </member>
+        <member name="P:sopka.Services.Chat.MessengerNotification.NotificationType">
+            <summary>Тип оповещения - obj.Str0</summary>
+        </member>
+        <member name="P:sopka.Services.Chat.MessengerNotification.NotifyRefId">
+            <summary>Основание для оповещения (сущность Reference) - obj.ReferenceId</summary>
+        </member>
+        <member name="T:sopka.Services.Chat.PreCreateConversationModel">
+            <summary>
+            Модель предварительного создания чата
+            </summary>
+        </member>
+        <member name="T:sopka.Services.CurrentUser">
+            <summary>
+            Класс для работы с текущим пользователем
+            </summary>
+        </member>
+        <member name="M:sopka.Services.Email.EmailService.SendResetPassword(System.String,System.String)">
+            <summary>
+            Отправка письма для сброса пароля
+            </summary>
+            <param name="to">email</param>
+            <param name="resetUrl">Ссылка на сброc пароля</param>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.Accumulator">
+            <summary>
+            Состояние выполнения правила
+            </summary>
+        </member>
+        <member name="F:sopka.Services.EquipmentLogMatcher.Accumulator._events">
+            <summary>
+            Словарь совпадений - Id лога : дата совпадения
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.Increment(System.Int32,System.Nullable{System.Int64})">
+            <summary>
+            Добавлене сработавшего события
+            </summary>
+            <param name="logId">Идентификатор лога</param>
+            <param name="eventTimestamp">Дата события, если нужны. Без агрумента будет считаться по серверному времени</param>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.ClearOutdated">
+            <summary>
+            Убирает совпадения, которые уже не помещаются в заданный период
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.Accumulator.Reset">
+            <summary>
+            Сброс в начальное состояние
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.ConditionExpressionParser.ExtractExpression(System.String,System.Int32)">
+            <summary>
+            Достает подстроку выражения 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus">
+            <summary>
+            Шина обмена сообщениями с фоновыми задачами
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.Rules">
+            <summary>
+            Данные обновления правил
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.RuleActions">
+            <summary>
+            Данные планируемых действий
+            </summary>
+        </member>
+        <member name="P:sopka.Services.EquipmentLogMatcher.EquipmentLogDataBus.LogQueue">
+            <summary>
+            Данные логов
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.RenewRules">
+            <summary>
+            Обновление действующих правил
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.StoreState">
+            <summary>
+             Сохранение текущего состояния правил в базу 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.EquipmentLogMatcher.RestoreState">
+            <summary>
+            Восстановление состояния правил из базы
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.EquipmentLogMatcher.RuleAction">
+            <summary>
+            Результат матчинга правила с логами
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleActionsProcessService.ProcessActions(sopka.Services.EquipmentLogMatcher.RuleAction,sopka.Services.Email.EmailService,sopka.Services.IncidentService)">
+            <summary>
+            Обработка результата действия - фактическая отправка письма или создание инцидента
+            </summary>
+            <param name="action"></param>
+            <param name="emailService"></param>
+            <param name="incidentService"></param>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllInParticularOrder.MoveNext">
+            <summary>
+            Обходит условия до первого не выполняющегося
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllMatcher.MoveNext">
+            <summary>
+            Всегда обходит все условия
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AllMatcher.IsTriggered(System.Boolean)">
+            <summary>
+            Правило считается сработавшим, если в течение заданного интервала срабатывали все условия
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.AtLeastOneMatcher.MoveNext">
+            <summary>
+            Обходит условия до первого выполняющегося
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.Process(sopka.Models.EquipmentLogs.EquipmentLog)">
+            <summary>
+            Вычисления совпадения правила 
+            </summary>
+            <param name="log">Запись лога оборудования</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.ClearOutdated">
+            <summary>
+            Очистка устаревших совпадений
+            </summary>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.MoveNext">
+            <summary>
+            Перемещение к следующему условию для проверки
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.EquipmentLogMatcher.RuleMatcher.RuleMatcherBase.IsTriggered(System.Boolean)">
+            <summary>
+            Сработало ли всё правило
+            </summary>
+            <param name="clearOutdatedFirst">Предварительное очищение устаревших данных</param>
+            <remarks>
+            Если метод вызывается не во время обработки логов,
+            нужно установить флаг предварительной очистки для получения правильного результата
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.FileService.NormalizeFilename(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Выдает не повторящееся имя для файла 
+            </summary>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.AttachIncident(System.Int32,System.Int32)">
+            <summary>
+            Указание, что статья из базы знаний решает инцидент
+            </summary>
+            <param name="articleId"></param>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.DetachIncident(System.Int32,System.Int32)">
+            <summary>
+            Удаление связи между инцидентов и статьей
+            </summary>
+            <param name="articleId"></param>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.GetAttachedArticles(System.Int32)">
+            <summary>
+            Получение списка связанных статей
+            </summary>
+            <param name="incidentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.KnowledgeBaseService.GetAttachedIncidents(System.Int32)">
+            <summary>
+            Получение списка связанных инцидентов
+            </summary>
+            <param name="articleId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:sopka.Services.PasswordGenerator">
+            <summary>
+            Класс, реализующий генератор случайных паролей на основании параметров валидации
+            </summary>
+        </member>
+        <member name="M:sopka.Services.PasswordGenerator.#ctor(Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Identity.IdentityOptions})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="identityOptions">Параметры валидации паролей</param>
+        </member>
+        <member name="M:sopka.Services.PasswordGenerator.Get">
+            <summary>
+            Метод для генерации случайного пароля
+            </summary>
+            <returns>Пароль</returns>
+        </member>
+        <member name="T:sopka.Services.UserConnectionsService">
+            <summary>
+            Класс предназначен для управления подключениями пользователей, выполнивших вход в систему
+            </summary>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.UpdateConnection(System.String,System.Security.Principal.IPrincipal)">
+            <summary>
+            Метод выполняет создание нового или продление текущего подключения пользователя
+            </summary>
+            <param name="contextConnectionId">Идентификатор подключения пользователя</param>
+            <param name="contextUser">Текущий пользователь</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.UserDisconnected(System.String,System.Security.Principal.IPrincipal)">
+            <summary>
+            Метод выполняет закрытие подключения пользователя
+            </summary>
+            <param name="contextConnectionId">Идентификатор подключения пользователя</param>
+            <param name="contextUser">Текущий пользователь</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.CloseMyConnections(System.Int32)">
+            <summary>
+            Метод выполняет удаление данных подключений пользователя в текущем подразделении
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="userOrgId">Идентификатор подразделения</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.CloseOpenedConnectionsExceptCurrent(System.String)">
+            <summary>
+            Метод выполняет удаление данных подключений пользователя, кроме подключений в указанном подразделении
+            </summary>
+            <param name="userName">Имя пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.CheckIfUserOnline(System.String)">
+            <summary>
+            Метод выполняет проверку нахождения пользователя в сети
+            </summary>
+            <param name="userName">Логин пользователя</param>
+            <returns>Метод возращет True, если последнее подключение пользователя было выполнено за последний <code>ConnectionTimeout</code> интервал времени, иначе - False</returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.CheckIfUserOnlineByUserId(System.String)">
+            <summary>
+            Метод выполняет проверку нахождения пользователя в сети
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <returns>Метод возращет True, если последнее подключение пользователя было выполнено за последний <code>ConnectionTimeout</code> интервал времени, иначе - False</returns>
+        </member>
+        <member name="M:sopka.Services.UserConnectionsService.CheckIfUsersOnline(System.Collections.Generic.List{System.String})">
+            <summary>
+            Возвращает массив id пользователей, которые в сети
+            </summary>
+            <param name="userIds">Идентификаторы пользователей</param>
+            <returns></returns>
+        </member>
+        <member name="M:sopka.Startup.TryCreateDefaultRolesAndUsers(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Конфигурация ролей и пользователей по умолчанию
+            </summary>
+            <param name="app">Провайдер конфигурации конвеера запросов</param>
+        </member>
+    </members>
+</doc>

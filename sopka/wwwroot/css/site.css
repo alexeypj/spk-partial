@@ -1,0 +1,54 @@
+﻿
+#left-panel {
+	min-height: 800px;
+	display: block;
+	float: left;
+	width: 20%;
+	border-right: 2px solid #ccc
+}
+#left-panel .left-panel-header {
+	display: flex;
+	justify-content: space-evenly;
+	border-bottom: 1px solid #000;
+}
+
+#left-panel .search-box {
+	border-bottom: 1px solid #000;
+}
+
+.main-content {
+	padding: 0 40px;
+	display: flex;
+	width: 75%;
+}
+
+.object-entry {
+	display: block;
+	clear: both;
+	padding: 10px 20px;
+	position: relative;
+	cursor: pointer;
+}
+.object-entry:hover {
+	background-color: #ddd;
+}
+
+.object-entry-selected {
+	background-color: #ddd;
+}
+
+.object-entry::after {
+	content: "";
+	background: #ccc;
+	position: absolute;
+	bottom: 0;
+	left: 5%;
+	height: 2px;
+	width: 90%;
+}
+
+.object-entry .object-name {
+	font-weight: bold;
+	font-size: 1.1em;
+}
+

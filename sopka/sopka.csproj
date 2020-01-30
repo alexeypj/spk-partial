@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.5</TypeScriptToolsVersion>
+    <Authors>RFX Team</Authors>
+    <Company>refactorx</Company>
+    <Version>1.0.1</Version>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AssemblyVersion>1.0.66</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Projects\SOPKA\SOPKA2019\sopka\sopka.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Services\EquipmentLogMatcher\ConditionsMatch\**" />
+    <Content Remove="Services\EquipmentLogMatcher\ConditionsMatch\**" />
+    <EmbeddedResource Remove="Services\EquipmentLogMatcher\ConditionsMatch\**" />
+    <None Remove="Services\EquipmentLogMatcher\ConditionsMatch\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AppClient\Components\Companies\EditForm.ts" />
+    <None Remove="AppClient\Components\Companies\EditForm.vue" />
+    <None Remove="AppClient\Components\Inventory\EquipmentDetail\EquipmentDetail.ts" />
+    <None Remove="AppClient\Components\Inventory\Equipments\Equipments.ts" />
+    <None Remove="AppClient\Components\Inventory\ObjectDetail\ObjectDetail.ts" />
+    <None Remove="AppClient\Components\Inventory\yMap\yMap.ts" />
+    <None Remove="AppClient\Components\Inventory\yMap\yMap.vue" />
+    <None Remove="AppClient\Components\MainPage\InfTable\chart\IncidentChart.ts" />
+    <None Remove="AppClient\Components\MainPage\InfTable\infTable.ts" />
+    <None Remove="AppClient\Components\MainPage\mailBoard\mailBoard.ts" />
+    <None Remove="AppClient\Components\MainPage\smallMap\smallMap.ts" />
+    <None Remove="AppClient\Components\MainPage\smallMap\smallMap.vue" />
+    <None Remove="AppClient\Components\MainPage\smallMessage\smallMessage.ts" />
+    <None Remove="AppClient\Components\Tariffs\EditForm\editForm.ts" />
+    <None Remove="AppClient\Components\Tariffs\EditForm\editForm.vue" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.3.1" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Stateless" Version="4.2.1" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Files\" />
+    <Folder Include="wwwroot\dist\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\JobServer.Core\JobServer.Core.csproj" />
+    <ProjectReference Include="..\PDFConverter\PDFConverter.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="AppClient\Components\Companies\EditForm.vue" />
+    <TypeScriptCompile Include="AppClient\Components\Companies\EditForm.ts" />
+    <TypeScriptCompile Include="AppClient\Components\Inventory\EquipmentDetail\EquipmentDetail.ts" />
+    <TypeScriptCompile Include="AppClient\Components\Inventory\Equipments\Equipments.ts" />
+    <TypeScriptCompile Include="AppClient\Components\Inventory\ObjectDetail\ObjectDetail.ts" />
+    <TypeScriptCompile Include="AppClient\Components\Inventory\yMap\yMap.vue" />
+    <TypeScriptCompile Include="AppClient\Components\Inventory\yMap\yMap.ts" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\InfTable\chart\IncidentChart.ts" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\InfTable\infTable.ts" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\mailBoard\mailBoard.ts" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\smallMap\smallMap.ts" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\smallMap\smallMap.vue" />
+    <TypeScriptCompile Include="AppClient\Components\MainPage\smallMessage\smallMessage.ts" />
+    <TypeScriptCompile Include="AppClient\Components\Tariffs\EditForm\editForm.vue" />
+    <TypeScriptCompile Include="AppClient\Components\Tariffs\EditForm\editForm.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition="!Exists('..\Ignored\DoNotRunWebpack.marker')">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <!-- In development, the dist files won't exist on the first run or when cloning to a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.libs.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.inline.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties appsettings_1json__JSONSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

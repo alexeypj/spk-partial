@@ -1,0 +1,113 @@
+/* jsTree custom theme */
+.jstree-default .jstree-node,
+.jstree-default .jstree-icon {
+    background-image: url("../img/jstree/32px.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.jstree-default .jstree-node {
+    background-repeat: repeat-y;
+}
+.jstree-default .jstree-last {
+    background: transparent;
+}
+.jstree-default .jstree-themeicon-custom {
+    background-color: transparent;
+    background-image: none;
+}
+.jstree-default .jstree-file {
+    background: url("../img/jstree/32px.png") -100px -68px no-repeat;
+}
+.jstree-default .jstree-folder {
+    background: url("../img/jstree/32px.png") -260px -4px no-repeat;
+}
+#jstree-dnd.jstree-default .jstree-ok,
+#jstree-dnd.jstree-default .jstree-er {
+    background-image: url("../img/jstree/32px.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.jstree-default-small .jstree-node,
+.jstree-default-small .jstree-icon {
+    background-image: url("../img/jstree/32px.png");
+}
+.jstree-default-small .jstree-node {
+    background-repeat: repeat-y;
+}
+.jstree-default-small .jstree-last {
+    background: transparent;
+}
+.jstree-default-small .jstree-themeicon-custom {
+    background-color: transparent;
+    background-image: none;
+}
+.jstree-default-small .jstree-file {
+    background: url("../img/jstree/32px.png") -103px -71px no-repeat;
+}
+.jstree-default-small .jstree-folder {
+    background: url("../img/jstree/32px.png") -263px -7px no-repeat;
+}
+#jstree-dnd.jstree-default-small .jstree-ok,
+#jstree-dnd.jstree-default-small .jstree-er {
+    background-image: url("../img/jstree/32px.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.jstree-default-large .jstree-node,
+.jstree-default-large .jstree-icon {
+    background-image: url("../img/jstree/32px.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.jstree-default-large .jstree-node {
+    background-repeat: repeat-y;
+}
+.jstree-default-large .jstree-last {
+    background: transparent;
+}
+.jstree-default-large .jstree-themeicon-custom {
+    background-color: transparent;
+    background-image: none;
+}
+.jstree-default-large .jstree-file {
+    background: url("../img/jstree/32px.png") -96px -64px no-repeat;
+}
+.jstree-default .jstree-folder {
+    background: url("../img/jstree/32px.png") -256px 0px no-repeat;
+}
+#jstree-dnd.jstree-default-large .jstree-ok,
+#jstree-dnd.jstree-default-large .jstree-er {
+    background-image: url("../img/jstree/32px.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.jstree-anchor[data-style='bold'] {
+    font-weight: bold;
+}
+
+/*
+.jstree-default .folder { background:url('/img/jstree/file_sprite.png') right bottom no-repeat; }
+.jstree-default .file { background:url('/img/jstree/file_sprite.png') 0 0 no-repeat; }
+.jstree-default .file-pdf { background-position: -32px 0 }
+.jstree-default .file-as { background-position: -36px 0 }
+.jstree-default .file-c { background-position: -72px -0px }
+.jstree-default .file-iso { background-position: -108px -0px }
+.jstree-default .file-htm, #tree .file-html, #tree .file-xml, #tree .file-xsl { background-position: -126px -0px }
+.jstree-default .file-cf { background-position: -162px -0px }
+.jstree-default .file-cpp { background-position: -216px -0px }
+.jstree-default .file-cs { background-position: -236px -0px }
+.jstree-default .file-sql { background-position: -272px -0px }
+.jstree-default .file-xls, #tree .file-xlsx { background-position: -362px -0px }
+.jstree-default .file-h { background-position: -488px -0px }
+.jstree-default .file-crt, #tree .file-pem, #tree .file-cer { background-position: -452px -18px }
+.jstree-default .file-php { background-position: -108px -18px }
+.jstree-default .file-jpg, #tree .file-jpeg, #tree .file-png, #tree .file-gif, #tree .file-bmp { background-position: -126px -18px }
+.jstree-default .file-ppt, #tree .file-pptx { background-position: -144px -18px }
+.jstree-default .file-rb { background-position: -180px -18px }
+.jstree-default .file-text, #tree .file-txt, #tree .file-md, #tree .file-log, #tree .file-htaccess { background-position: -254px -18px }
+.jstree-default .file-doc, #tree .file-docx { background-position: -362px -18px }
+.jstree-default .file-zip, #tree .file-gz, #tree .file-tar, #tree .file-rar { background-position: -416px -18px }
+.jstree-default .file-js { background-position: -434px -18px }
+.jstree-default .file-css { background-position: -144px -0px }
+.jstree-default .file-fla { background-position: -398px -0px } */

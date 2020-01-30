@@ -1,0 +1,55 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"outDir": "./wwwroot/dist/",
+		"allowSyntheticDefaultImports": true,
+		"strictPropertyInitialization": false,
+		"experimentalDecorators": true,
+		"module": "esNext",
+		"moduleResolution": "node",
+		"target": "es6",
+		"sourceMap": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true,
+		"strict": true,
+		//"types": ["webpack-env"],
+		"strictFunctionTypes": false,
+		"noImplicitAny": false,
+		"noImplicitThis": false,
+		//"allowJs": true
+		"keyofStringsOnly": true,
+		// "inlineSources": true,
+		//"incremental": true,
+		"baseUrl": ".",
+		"paths": {
+            "*": [
+                "./node_modules/@types"
+            ],
+            "Components/*": ["AppClient/Components/*"],
+            "Shared/*": ["AppClient/Shared/*"],
+            "Store/*": ["AppClient/Store/*"]
+		}
+	},
+	"awesomeTypescriptLoaderOptions": {
+		"useWebpackText": true,
+		//"useTranspileModule": true,
+		"doTypeCheck": true,
+		"forkChecker": true
+	},
+	"lib": [
+		"dom",
+		"es2015",
+		"es6",
+		"es2018.promise"
+
+	],
+	"include": [
+		"./AppClient/**/*"
+	],
+	"exclude": [
+		"wwwroot/dist",
+		"wwwroot/lib",
+		"bin",
+		"node_modules"
+	]
+}

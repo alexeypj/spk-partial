@@ -1,0 +1,22 @@
+// tslint:disable max-classes-per-file
+export const namespace = "equipment";
+export class Actions {
+}
+Actions.FETCH_EQUIPMENT_LIST = "FETCH_EQUIPMENT_LIST";
+Actions.FETCH_DICTIONARIES = "FETCH_DICTIONARY";
+Actions.APPLY_COLUMN_FILTER = "APPLY_COLUMN_FILTER";
+export class Mutations {
+}
+Mutations.SET_EQUIPMENT_LIST = "SET_EQUIPMENT_LIST";
+Mutations.SET_EQUIPMENT_FILTER = "SET_EQUIPMENT_FILTER";
+Mutations.SET_EQUIPMENT_TOTAL_ITEMS = "SET_EQUIPMENT_TOTAL_ITEMS";
+Mutations.SET_EQUIPMENT_DICTIONARIES = "SET_EQUIPMENT_DICTIONARIES";
+Mutations.SET_IS_CONTENT_LOADING = "SET_IS_CONTENT_LOADING";
+Mutations.SET_SELECTED_ID = "SET_SELECTED_ID";
+export class Getters {
+}
+Getters.EQUIPMENT_LIST = "EQUIPMENT_LIST";
+Getters.DICTIONARIES = "DICTIONARIES";
+Getters.NEW_EQUIPMENT_FILTER = "NEW_EQUIPMENT_FILTER";
+Getters.SELECTED_ID = "SELECTED_ID";
+//# sourceMappingURL=constants.js.map

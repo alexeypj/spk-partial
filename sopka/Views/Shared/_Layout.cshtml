@@ -1,0 +1,85 @@
+﻿@using Microsoft.Extensions.Options
+@using sopka.Helpers
+@using sopka.Models.Options
+@using sopka.Services
+@inject CurrentUser CurrentUser
+@inject IOptions<InstallationOptions> InstallationOptions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOPKA | RFX</title>
+    <base href="@Url.AbsoluteContent("~/")">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Toastr style -->
+    <link href="~/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="~/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="~/css/animate.css" rel="stylesheet">
+    @*<link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />*@
+    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
+    <link href="~/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/select2-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/plugins/jsTree/style.min.css" rel="stylesheet" />
+    <link href="~/css/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/css/jstree.custom.css" rel="stylesheet" />
+	<link href="~/css/textarea-resize.css" rel="stylesheet"/>
+
+
+    <script src="~/js/plugins/chartJs/Chart.min.js"></script>
+    <!-- <script src="~/dist/libs.bundle.js" asp-append-version="true"></script> -->
+    <script src="~/dist/vendor.bundle.js" asp-append-version="true"></script>
+    <script src="~/dist/start.bundle.js" asp-append-version="true"></script>
+    <script>
+		window.baseUrl = "@Url.AbsoluteContent("~/")";
+		window.assembly = "@(new Assembly().GetAssembly())";
+		window.publicPath = "@InstallationOptions.Value.PublicPath";
+        window.currentUser = {
+            IsAuthenticated: @(CurrentUser.IsAuthenticated ? "true" : "false"),
+            UserRoles: []
+        };
+        @if (CurrentUser.IsAuthenticated)
+        {
+            <text>
+        window.currentUser.Id = "@CurrentUser.User.Id";
+        window.currentUser.UserName = "@CurrentUser.User.UserName";
+        window.currentUser.FIO = "@Html.Raw(CurrentUser.User.FIO)";
+        window.currentUser.Email = "@CurrentUser.User.Email";
+        window.currentUser.PhoneNumber = "@CurrentUser.User.PhoneNumber";
+        window.currentUser.IsBlock = "@(CurrentUser.User.IsBlock?"true":"false")";
+		window.currentUser.BlockReasong = "@CurrentUser.User.BlockReason";
+        @if (CurrentUser.User.CompanyId.HasValue)
+        {
+            <text>
+            window.currentUser.CompanyId = @CurrentUser.User.CompanyId;
+            window.currentUser.IsAccessPaid = @CurrentUser.IsPaidCompany.ToString().ToLower();
+            </text>
+        }
+        @if (CurrentUser.User.BlockDate.HasValue)
+            {
+                <text>
+        window.currentUser.BlockDate = new Date("@CurrentUser.User.BlockDate.Value.ToString("O")");
+                </text>
+            }
+        window.currentUser.UserRoles = [
+            @foreach (var userRole in CurrentUser.User.UserRoles)
+            {
+                <text>
+            { RoleId: '@userRole.RoleId', UserId: '@userRole.UserId', Name: '@Html.Raw(userRole.Role.Name)', ShortTitle: '@Html.Raw(userRole.Role.ShortTitle)' },
+                </text>
+            }
+        ];
+            </text>
+        }
+    </script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4bfa7af8-b2d5-4a8f-9e88-24ad65069a9e&lang=ru_RU" type="text/javascript">
+    </script>
+
+</head>
+<body class="mini-navbar">
+    @RenderBody()  
+</body>
+</html>

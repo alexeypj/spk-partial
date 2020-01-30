@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@model Exception
+@{
+    Layout = "_ErrorLayout";
+}
+<h2>Что-то пошло не так, повторите попытку!</h2>
+@{
+	var callingUrl = Context.Request.GetDisplayUrl();
+	var isLocal = !string.IsNullOrEmpty(callingUrl) && (Url.IsLocalUrl(callingUrl) || new Uri(callingUrl).Host.Equals("localhost", StringComparison.OrdinalIgnoreCase)); ;
+}
+<style>
+	.overflow_error {
+		overflow: auto;
+		max-height: calc(100vh - 100px);
+	}
+</style>
+<div class="alert alert-danger overflow_error" role="alert">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	<span class="sr-only">Error:</span>
+	@if (isLocal)
+	{
+		<br />
+		<span>@Model?.ToString()</span>
+	}
+</div>

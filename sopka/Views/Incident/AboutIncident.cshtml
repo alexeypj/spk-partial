@@ -1,0 +1,362 @@
+﻿
+@{
+    ViewData["Title"] = "AboutIncident";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-4">
+
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th>id</th>
+                        <th>Тип компьютерной атаки</th>
+                        <th>Дата фиксации</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>123</td>
+                        <td><a asp-action="AboutIncident" asp-controller="Incident" title="Нарушение политики безопасности">Нарушение политики безопасности</a></td>
+                        <td>05.03.2018 17:55</td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td><a asp-action="AboutIncident" asp-controller="Incident" title="Нарушение политики безопасности">Нарушение политики безопасности</a></td>
+                        <td>05.03.2018 17:55</td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td><a asp-action="AboutIncident" asp-controller="Incident" title="Нарушение политики безопасности">Нарушение политики безопасности</a></td>
+                        <td>05.03.2018 17:55</td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td><a asp-action="AboutIncident" asp-controller="Incident" title="Нарушение политики безопасности">Нарушение политики безопасности</a></td>
+                        <td>05.03.2018 17:55</td>
+
+
+
+                    </tr>
+
+
+
+
+
+
+                </tbody>
+            </table>
+
+            <div class="btn-group">
+                <button class="btn btn-white btn-small">Фильтры</button>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <div class="ibox float-e-margins">     
+        <div class="ibox-content">
+            <div class="form-group">
+
+                <div class="row no-margins">
+                    <div>
+                        <label>Тип атаки</label>
+                        <select class="form-control" name="attak">
+                            <option>Нарушение политики безопасности</option>
+                            <option>Dos/dDoS</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Дата фиксации</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div>
+                        <label>Статус инцидента</label>
+                        <select class="form-control" name="inc">
+                            <option>Статус 1</option>
+                            <option>Статус 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Ответственный</label>
+                        <select class="form-control" name="role">
+                            <option>Роль 1</option>
+                            <option>Роль 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Ответственный</label>
+                        <select class="form-control" name="role">
+                            <option>Роль 1</option>
+                            <option>Роль 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Кем заведено</label>
+                        <select class="form-control" name="usr">
+                            <option>Пользователь 1</option>
+                            <option>Пользователь 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Объект</label>
+                        <select class="form-control" name="obj">
+                            <option>Объект 1</option>
+                            <option>Объект 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Оборудование</label>
+                        <select class="form-control" name="eq">
+                            <option>Тип 1</option>
+                            <option>Тип 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Аппаратная платформа</label>
+                        <select class="form-control" name="pl">
+                            <option>Тип 1</option>
+                            <option>Тип 2</option>
+                        </select>
+                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                    </div>
+                    <div>
+                        <label>Страна источника</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+
+
+
+
+<div class="col-md-8">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+            <div class="panel-title m-b-xs">
+                <h4>Инцидент 123</h4>
+                <small>Создание: 22.04.2019 12:43 (Пользователь 1)    </small>
+                <small>Обновление: 22.04.2019 15:29 (Пользователь 2)</small>
+                <br />
+                Статус: <span class="text-navy">Новый</span>
+                <br />
+                Ответственная группа: <span class="text-navy">Корпоративный центр</span>
+            </div>
+			<div class="col-md-12 pleft0 m-b-sm">
+				<button class="btn btn-primary btn-small">Передать уточнения</button>
+			</div>
+            <div class="panel-options">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab-1">Описание</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2">История изменений</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2">Рекоммендации</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2">Документы</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="tab-content">
+
+
+                <div id="tab-1" class="tab-pane active">
+                    
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content ">
+
+
+                            <div class="form-group">
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Тип атаки</label>
+                                        <select class="form-control m-b" name="attak">
+                                            <option>Нарушение политики безопасности</option>
+                                            <option>Dos/dDoS</option>
+                                        </select>
+                                        @*<input type="text" placeholder=".col-md-2" class="form-control">*@
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Время фиксации</label>
+                                        <input type="datetime-local" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Время окончания</label>
+                                        <input type="datetime-local" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Связь с другими инцидентами</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Описание компьютерной атаки</label>
+                                        @*<input type="text" placeholder=".col-md-4" class="form-control">*@
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Способ выявления компьютерной атаки</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>IP адрес</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>URL</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Страна</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Адрес</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <label>Назначение (Ресурсы, на которые направлена компьютерная атака)</label>
+
+                                <div class="row no-margins">
+                                    <div class="col-md-6 pleft0">
+                                        <label>Оборудование</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-5 pleft0">
+                                        <label>IP адрес</label>
+                                        <input type="text" placeholder="" class="form-control">
+                                    </div>
+                                    <div class="col-md-1  pleft0 pright0 text-right">
+                                        <label class="w100">&nbsp;</label>
+                                        <button class="btn btn-white"><i class="fa fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Рекомендации по блокировке</label>
+                                        @*<input type="text" placeholder=".col-md-4" class="form-control">*@
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Рекомендации по устранению последствий</label>
+                                        @*<input type="text" placeholder=".col-md-4" class="form-control">*@
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Рекомендации по предотвращению подобный инцидентов</label>
+                                        @*<input type="text" placeholder=".col-md-4" class="form-control">*@
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 text-right pright0">
+                                <button class="btn btn-success">Добавить в БЗ</button>
+                                <button class="btn btn-success">Сохранить</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div id="tab-2" class="tab-pane">
+
+                    <h4> Panel content here</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+
+
+
+
+<div id="knowledgebase-component"></div>
+
+<script src="~/dist/knowledgebase.js" asp-append-version="true"></script>
+
+
+
+
+<script>
+    $('#data').jstree({
+        'core': {
+            'data': [
+                'Инциденты',
+                {
+                    'text': 'Системное ПО',
+                    'state': {
+                        'opened': true
+                    },
+                    'children': [
+                        {
+                            'text': 'Microsoft',
+                            'children': [
+                                {
+                                    'text': 'Статья 1', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Статья 2', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Статья 3', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Статья 4', 'icon': 'none'
+                                }
+                            ],
+                            'state': {
+                                'opened': true
+                            }
+                        },
+                        {
+                            'text': 'UNIX',
+                            'children': [
+                                {
+                                    'text': 'Описание 1', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Описание 2', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Описание 3', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Описание 4', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Статья 1', 'icon': 'none'
+                                }
+                            ],
+                            'state': {
+                                'opened': true
+                            }
+                        },
+                        {
+                            'text': 'Other',
+                            'children': [
+                                {
+                                    'text': 'Приложение 1', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Порядок 1', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Описание', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Акт', 'icon': 'none'
+                                },
+                                {
+                                    'text': 'Счёт', 'icon': 'none'
+                                }
+                            ],
+                            'state': {
+                                'opened': true
+                            }
+                        }
+                    ]
+                },
+                'HDD',
+                'RAM',
+                'CPU',
+                'ПО',
+            ]
+        }
+    })
+
+</script>
