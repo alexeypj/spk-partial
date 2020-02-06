@@ -38,7 +38,7 @@
 				"aspnet-webpack": "3.0.0",
 				"awesome-typescript-loader": "5.2.1",
 				"bootbox": "4.4.0",
-				"bootstrap": "3.3.7",
+				"bootstrap": "4.3.1",
 				"clean-webpack-plugin": "2.0.1",
 				"css-loader": "2.1.1",
 				"expose-loader": "0.7.5",
